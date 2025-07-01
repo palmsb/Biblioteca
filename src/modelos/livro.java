@@ -5,3 +5,5 @@ public class Livro {
     private List<Reserva> reservas;
     private List<ObservadorDeReserva> observadores;
 }
+
+//criar a função para notificar
