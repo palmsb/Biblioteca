@@ -17,8 +17,12 @@ public class Livro {
         this.autores = autores;
         this.edicao = edicao;
         this.anoPublicacao = anoPublicacao;
-    }
 
+        this.exemplares = new ArrayList<>();
+        this.reservas = new ArrayList<>();
+        this.observadores = new ArrayList<>();
+
+    }
 }
 
 //criar a função para notificar
