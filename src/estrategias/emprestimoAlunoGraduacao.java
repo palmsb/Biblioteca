@@ -2,7 +2,7 @@ package estrategias;
 
 import modelos.*;
 
-public class EmprestimoAlunoPos implements EstrategiaEmprestimo {
+public class EmprestimoAlunoGraduacao implements EstrategiaEmprestimo {
 
     @Override
     public boolean podeEmprestar(Usuario usuario, Livro livro) {
@@ -14,6 +14,8 @@ public class EmprestimoAlunoPos implements EstrategiaEmprestimo {
 
         if (livro.getReservas().size() >= livro.getQuantidadeExemplaresDisponiveis()
             && !livro.usuarioTemReserva(usuario)) return false;
+
+        if (usuario.temExemplarDoLivro(livro)) return false;
 
         return true;
     }

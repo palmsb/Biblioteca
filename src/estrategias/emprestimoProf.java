@@ -1,38 +1,15 @@
-package modelos;
+package estrategias;
 
-import estrategias.emprestimoProf;
-import observer.observadorDeReserva;
+import modelos.*;
 
-public class Professor extends Usuario implements observadorDeReserva {
-
-    private int totalNotificacoes = 0;
-
-    public Professor(String codigo, String nome) {
-        super(codigo, nome);
-        this.estrategia = new EmprestimoProfessor();
-    }
+public class EmprestimoProfessor implements EstrategiaEmprestimo {
 
     @Override
-    public String getTipo() {
-        return "Professor";
-    }
+    public boolean podeEmprestar(Usuario usuario, Livro livro) {
+        if (livro.getExemplarDisponivel() == null) return false;
 
-    @Override
-    public int getPrazoEmprestimoEmDias() {
-        return 8;
-    }
+        if (usuario.temEmprestimosAtrasados()) return false;
 
-    @Override
-    public int getLimiteEmprestimos() {
-        return Integer.MAX_VALUE; 
-    }
-
-    @Override
-    public void notificarReservaExcedida() {
-        totalNotificacoes++;
-    }
-
-    public int getTotalNotificacoes() {
-        return totalNotificacoes;
+        return true;
     }
 }

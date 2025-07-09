@@ -2,11 +2,10 @@ package ui;
 
 import commands.*;
 import java.util.*;
-import java.util.Scanner;
 
 /**
  * Classe responsável pela interação com o usuário via linha de comando.
- * utiliza padrao command para executar as ações
+ * Utiliza o padrão Command para executar as ações.
  */
 public class SistemaConsole {
 
@@ -26,7 +25,8 @@ public class SistemaConsole {
 
     public void iniciar() {
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Bem-vindo a Biblioteca ENGSOFT! Por favor digite um comando:");
+        System.out.println("Bem-vindo à Biblioteca ENGSOFT!");
+        System.out.println("Comandos disponíveis: emp, dev, res, obs, liv, usu, ntf, sai");
 
         while (true) {
             System.out.print("> ");
@@ -37,7 +37,7 @@ public class SistemaConsole {
             String nomeComando = partes[0];
             String[] args = Arrays.copyOfRange(partes, 1, partes.length);
 
-            Comando comando = comandos.get(nomeComando);
+            Command comando = comandos.get(nomeComando);
             if (comando != null) {
                 try {
                     comando.executar(args);
