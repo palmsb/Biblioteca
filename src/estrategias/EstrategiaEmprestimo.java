@@ -1,7 +1,7 @@
 package estrategias;
 
-import modelos.usuario;
-import modelos.livro;
+import modelos.Usuario;
+import modelos.Livro;
 
 public interface EstrategiaEmprestimo {
     boolean podeEmprestar(Usuario usuario, Livro livro);

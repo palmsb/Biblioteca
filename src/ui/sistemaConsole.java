@@ -1,26 +1,26 @@
 package ui;
 
-import commands.*;
-import java.util.*;
+import Commands.*;
+import java.util.Scanner;
 
 /**
  * Classe responsável pela interação com o usuário via linha de comando.
- * Utiliza o padrão Command para executar as ações.
+ * Utiliza o padrão Comando para executar as ações.
  */
 public class SistemaConsole {
 
-    private final Map<String, Command> comandos = new HashMap<>();
+    private final Map<String, Comando> comandos = new HashMap<>();
 
     public SistemaConsole() {
         // Mapeia os comandos do sistema
-        comandos.put("emp", new EmprestimoCommand());
-        comandos.put("dev", new DevolucaoCommand());
-        comandos.put("res", new ReservaCommand());
-        comandos.put("obs", new ObservacaoCommand());
-        comandos.put("liv", new ConsultaLivroCommand());
-        comandos.put("usu", new ConsultaUsuarioCommand());
-        comandos.put("ntf", new ConsultaNotificacoesCommand());
-        comandos.put("sai", new SairCommand());
+        comandos.put("emp", new EmprestimoComando());
+        comandos.put("dev", new DevolucaoComando());
+        comandos.put("res", new ReservaComando());
+        comandos.put("obs", new ObservacaoComando());
+        comandos.put("liv", new ConsultaLivroComando());
+        comandos.put("usu", new ConsultaUsuarioComando());
+        comandos.put("ntf", new ConsultaNotificacoesComando());
+        comandos.put("sai", new SairComando());
     }
 
     public void iniciar() {
@@ -37,7 +37,7 @@ public class SistemaConsole {
             String nomeComando = partes[0];
             String[] args = Arrays.copyOfRange(partes, 1, partes.length);
 
-            Command comando = comandos.get(nomeComando);
+            Comando comando = comandos.get(nomeComando);
             if (comando != null) {
                 try {
                     comando.executar(args);

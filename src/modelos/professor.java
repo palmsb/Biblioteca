@@ -1,7 +1,7 @@
 package modelos;
 
-import estrategias.emprestimoProf;
-import observer.observadorDeReserva;
+import estrategias.EmprestimoProfessor;
+import observer.ObservadorDeReserva;
 
 public class Professor extends Usuario implements ObservadorDeReserva {
 
