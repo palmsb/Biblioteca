@@ -32,15 +32,17 @@ public class EmprestimoCommand implements Comando {
             return;
         }
 
-        // Verifica se o usuário já tem um exemplar desse livro emprestado
+        // verifica se o usuário já tem um exemplar deste livro
         for (Emprestimo e : usuario.getEmprestimos()) {
-            if (e.estaEmAndamento() && e.getExemplar() != null && livro.getExemplares().contains(e.getExemplar())) {
-                System.out.println("Não foi possível realizar o empréstimo, pois o usuário já tem um exemplar deste mesmo livro em empréstimo no momento.");
+            if (e.estaEmAndamento()
+                    && e.getExemplar() != null
+                    && livro.getExemplares().contains(e.getExemplar())) {
+                System.out.println("Não foi possível realizar o empréstimo, pois o usuário já possui um exemplar deste mesmo livro.");
                 return;
             }
         }
 
-        // Verifica se há exemplar disponível
+        //verificar se há exemplar disponível
         Exemplar exemplarDisponivel = livro.getExemplares().stream()
                 .filter(Exemplar::isDisponivel)
                 .findFirst()
@@ -51,18 +53,21 @@ public class EmprestimoCommand implements Comando {
             return;
         }
 
-        // Verifica se a estratégia permite o empréstimo
+        // verificar se a estratégia permite o empréstimo
         if (!usuario.getEstrategia().podeEmprestar(usuario, livro)) {
-            System.out.println("Empréstimo não permitido pelas regras do sistema.");
+            System.out.println("Empréstimo não permitido devido a políticas de uso. \nPor favor, verifique se atingiu o limite de reservas, se possui atraso na devolução ou se já existem reservas feitas pelos exemplares deste livro.");
             return;
         }
 
-        // Remove reserva do usuário, se existir
-        List<Reserva> reservas = livro.getReservas();
-        reservas.removeIf(r -> r.getUsuario().equals(usuario));
+        // p/ remover a reserva do usuario se tiver
+        livro.cancelarReservaDoUsuario(usuario);
 
-        // Cria o empréstimo
+        // criaro empréstimo
         Emprestimo emprestimo = new Emprestimo(usuario, exemplarDisponivel, LocalDate.now());
+
+        // registrar o empréstimo no livro
+        livro.registrarEmprestimo(emprestimo);
+
         System.out.println("Empréstimo realizado com sucesso!");
     }
 }

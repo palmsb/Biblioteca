@@ -54,7 +54,7 @@ public class Repositorio {
         usuarios.add(new AlunoPosGraduacao("456", "Luiz Fernando Rodrigues"));
         usuarios.add(new AlunoGraduacao("789", "Pedro Paulo"));
         usuarios.add(new Professor("100", "Carlos Lucena"));
-
+    
         // Livros
         Livro l1 = new Livro("100", "Engenharia de Software", "Addison Wesley", List.of("Ian Sommerville"), "6ª", 2000);
         Livro l2 = new Livro("101", "UML - Guia do Usuário", "Campus", List.of("Grady Booch", "James Rumbaugh", "Ivar Jacobson"), "7ª", 2000);
@@ -64,18 +64,18 @@ public class Repositorio {
         Livro l6 = new Livro("301", "Software Metrics", "CRC Press", List.of("Norman Fenton", "James Bieman"), "3ª", 2014);
         Livro l7 = new Livro("400", "Design Patterns", "Addison Wesley", List.of("Erich Gamma", "Richard Helm", "Ralph Johnson", "John Vlissides"), "1ª", 1994);
         Livro l8 = new Livro("401", "UML Distilled", "Addison Wesley", List.of("Martin Fowler"), "3ª", 2003);
-
+    
         livros.addAll(List.of(l1, l2, l3, l4, l5, l6, l7, l8));
-
-        // Exemplares
-        l1.adicionarExemplar(new Exemplar("01"));
-        l1.adicionarExemplar(new Exemplar("02"));
-        l2.adicionarExemplar(new Exemplar("03"));
-        l3.adicionarExemplar(new Exemplar("04"));
-        l4.adicionarExemplar(new Exemplar("05"));
-        l5.adicionarExemplar(new Exemplar("06"));
-        l5.adicionarExemplar(new Exemplar("07"));
-        l7.adicionarExemplar(new Exemplar("08"));
-        l7.adicionarExemplar(new Exemplar("09"));
+    
+        // Exemplares (com referência ao livro)
+        l1.adicionarExemplar(new Exemplar("01", l1));
+        l1.adicionarExemplar(new Exemplar("02", l1));
+        l2.adicionarExemplar(new Exemplar("03", l2));
+        l3.adicionarExemplar(new Exemplar("04", l3));
+        l4.adicionarExemplar(new Exemplar("05", l4));
+        l5.adicionarExemplar(new Exemplar("06", l5));
+        l5.adicionarExemplar(new Exemplar("07", l5));
+        l7.adicionarExemplar(new Exemplar("08", l7));
+        l7.adicionarExemplar(new Exemplar("09", l7));
     }
 }

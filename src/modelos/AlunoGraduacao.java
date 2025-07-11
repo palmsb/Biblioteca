@@ -24,3 +24,4 @@ public class AlunoGraduacao extends Usuario {
         return 2;
     }
 }
+

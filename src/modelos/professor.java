@@ -36,3 +36,5 @@ public class Professor extends Usuario implements ObservadorDeReserva {
         return totalNotificacoes;
     }
 }
+
+//o

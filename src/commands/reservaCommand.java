@@ -31,7 +31,7 @@ public class ReservaCommand implements Comando {
             return;
         }
 
-        // Verifica se o usuário já tem uma reserva para esse livro
+        // cerifica se o usuário já tem uma reserva para esse livro
         for (Reserva r : livro.getReservas()) {
             if (r.getUsuario().equals(usuario)) {
                 System.out.println("O usuário já possui uma reserva para este livro.");
@@ -39,8 +39,8 @@ public class ReservaCommand implements Comando {
             }
         }
 
-        // Cria e registra a reserva
-        Reserva reserva = new Reserva(usuario, LocalDate.now());
+        // cria e registra a reserva
+        Reserva reserva = new Reserva(usuario, livro, LocalDate.now());
         livro.adicionarReserva(reserva);
         usuario.getReservas().add(reserva);
 

@@ -3,9 +3,11 @@ package modelos;
 public class Exemplar {
     private String codigo;
     private boolean emprestado;
+    private Livro livro; // novo campo
 
-    public Exemplar(String codigo) {
+    public Exemplar(String codigo, Livro livro) {
         this.codigo = codigo;
+        this.livro = livro;
         this.emprestado = false; // por padrão, está disponível
     }
 
@@ -29,8 +31,14 @@ public class Exemplar {
         this.emprestado = false;
     }
 
+    public Livro getLivro() {
+        return livro;
+    }
+
     @Override
     public String toString() {
         return String.format("Exemplar %s - %s", codigo, emprestado ? "Emprestado" : "Disponível");
     }
 }
+
+

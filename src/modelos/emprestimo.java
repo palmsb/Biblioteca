@@ -58,9 +58,11 @@ public class Emprestimo {
 
     @Override
     public String toString() {
-        return String.format("Empréstimo de %s (%s) - Exemplar %s\nData: %s | Prevista: %s | %s",
+        return String.format("Empréstimo de %s (%s) - Exemplar %s\nData: %s | Devolução Prevista: %s | %s",
                 exemplar.getCodigo(), usuario.getNome(), exemplar.getCodigo(),
                 dataEmprestimo, dataPrevistaDevolucao,
-                finalizado ? "Devolvido em " + dataDevolucao : "Em andamento");
+                finalizado ? "Finalizado em " + dataDevolucao : "Em curso");
     }
 }
+
+

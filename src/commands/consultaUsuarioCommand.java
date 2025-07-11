@@ -21,28 +21,41 @@ public class ConsultaUsuarioCommand implements Comando {
             return;
         }
 
-        System.out.println("👤 Usuário: " + usuario.getNome());
+        System.out.println("=== Informações do Usuário ===");
+        System.out.println("Nome: " + usuario.getNome());
         System.out.println("Código: " + usuario.getCodigo());
         System.out.println("Tipo: " + usuario.getTipo());
 
-        System.out.println("\n📚 Empréstimos em andamento:");
-        boolean temEmprestimos = false;
-        for (Emprestimo e : usuario.getEmprestimos()) {
-            if (e.estaEmAndamento()) {
-                System.out.println(" - " + e);
-                temEmprestimos = true;
+        // empréstimos
+        System.out.println("\n=== Empréstimos ===");
+        if (usuario.getEmprestimos().isEmpty()) {
+            System.out.println("Nenhum empréstimo registrado.");
+        } else {
+            for (Emprestimo e : usuario.getEmprestimos()) {
+                String tituloLivro = e.getExemplar().getLivro().getTitulo();
+                String codigoExemplar = e.getExemplar().getCodigo();
+                String status = e.estaEmAndamento()
+                        ? "Em curso | Devolução prevista: " + e.getDataPrevistaDevolucao()
+                        : "Finalizado em: " + e.getDataDevolucao();
+
+                System.out.printf(" - Livro: %s | Exemplar: %s | Data do Empréstimo: %s | %s%n",
+                        tituloLivro,
+                        codigoExemplar,
+                        e.getDataEmprestimo(),
+                        status
+                );
             }
         }
-        if (!temEmprestimos) {
-            System.out.println("Nenhum empréstimo em andamento.");
-        }
 
-        System.out.println("\n📑 Reservas:");
+        // reservas
+        System.out.println("\n=== Reservas ===");
         if (usuario.getReservas().isEmpty()) {
             System.out.println("Nenhuma reserva registrada.");
         } else {
             for (Reserva r : usuario.getReservas()) {
-                System.out.printf(" - Livro: %s | Data: %s%n", r.getLivro().getTitulo(), r.getDataReserva());
+                Livro livro = r.getLivro();
+                String titulo = (livro != null) ? livro.getTitulo() : "Livro desconhecido";
+                System.out.printf(" - Livro: %s | Data da Reserva: %s%n", titulo, r.getDataReserva());
             }
         }
     }

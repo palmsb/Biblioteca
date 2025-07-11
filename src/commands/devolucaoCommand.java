@@ -31,7 +31,7 @@ public class DevolucaoCommand implements Comando {
             return;
         }
 
-        // Procura um empréstimo em andamento do usuário para um exemplar desse livro
+        // procura se tem um empréstimo em andamento do usuário para um exemplar desse livro
         Emprestimo emprestimoParaDevolver = null;
         for (Emprestimo e : usuario.getEmprestimos()) {
             if (e.estaEmAndamento() && livro.getExemplares().contains(e.getExemplar())) {

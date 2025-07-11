@@ -27,7 +27,7 @@ public class ConsultaNotificacoesCommand implements Comando {
         }
 
         Professor professor = (Professor) usuario;
-        System.out.printf("🔔 O professor %s recebeu %d notificações.%n",
+        System.out.printf("O professor %s recebeu %d notificações.%n",
                 professor.getNome(), professor.getTotalNotificacoes());
     }
 }

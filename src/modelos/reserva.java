@@ -5,9 +5,11 @@ import java.time.LocalDate;
 public class Reserva {
     private Usuario usuario;
     private LocalDate dataReserva;
+    private Livro livro;
 
-    public Reserva(Usuario usuario, LocalDate dataReserva) {
+    public Reserva(Usuario usuario, Livro livro, LocalDate dataReserva) {
         this.usuario = usuario;
+        this.livro = livro;
         this.dataReserva = dataReserva;
     }
 
@@ -17,6 +19,10 @@ public class Reserva {
 
     public LocalDate getDataReserva() {
         return dataReserva;
+    }
+
+    public Livro getLivro() {
+        return livro;
     }
 
     @Override

@@ -18,3 +18,4 @@ public class EmprestimoAlunoPos implements EstrategiaEmprestimo {
         return true;
     }
 }
+

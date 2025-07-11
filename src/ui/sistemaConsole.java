@@ -1,6 +1,9 @@
 package ui;
 
-import Commands.*;
+import commands.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Scanner;
 
 /**
@@ -13,14 +16,14 @@ public class SistemaConsole {
 
     public SistemaConsole() {
         // Mapeia os comandos do sistema
-        comandos.put("emp", new EmprestimoComando());
-        comandos.put("dev", new DevolucaoComando());
-        comandos.put("res", new ReservaComando());
-        comandos.put("obs", new ObservacaoComando());
-        comandos.put("liv", new ConsultaLivroComando());
-        comandos.put("usu", new ConsultaUsuarioComando());
-        comandos.put("ntf", new ConsultaNotificacoesComando());
-        comandos.put("sai", new SairComando());
+        comandos.put("emp", new EmprestimoCommand());
+        comandos.put("dev", new DevolucaoCommand());
+        comandos.put("res", new ReservaCommand());
+        comandos.put("obs", new ObservacaoCommand());
+        comandos.put("liv", new ConsultaLivroCommand());
+        comandos.put("usu", new ConsultaUsuarioCommand());
+        comandos.put("ntf", new ConsultaNotificacoesCommand());
+        comandos.put("sai", new SairCommand());
     }
 
     public void iniciar() {
